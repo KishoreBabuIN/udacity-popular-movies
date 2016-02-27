@@ -1,6 +1,9 @@
 
 package com.kishorebabu.popularmovies.model;
 
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -37,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "vote_average",
     "vote_count"
 })
-public class Movie {
+public class Movie implements android.os.Parcelable {
 
     @JsonProperty("adult")
     private Boolean adult;
@@ -612,4 +615,83 @@ public class Movie {
         this.voteCount = voteCount;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.adult);
+        dest.writeString(this.backdropPath);
+        dest.writeValue(this.budget);
+        dest.writeList(this.genres);
+        dest.writeList(this.genresIds);
+        dest.writeString(this.homepage);
+        dest.writeValue(this.id);
+        dest.writeString(this.imdbId);
+        dest.writeString(this.originalLanguage);
+        dest.writeString(this.originalTitle);
+        dest.writeString(this.overview);
+        dest.writeValue(this.popularity);
+        dest.writeString(this.posterPath);
+        dest.writeList(this.productionCompanies);
+        dest.writeList(this.productionCountries);
+        dest.writeString(this.releaseDate);
+        dest.writeValue(this.revenue);
+        dest.writeValue(this.runtime);
+        dest.writeList(this.spokenLanguages);
+        dest.writeString(this.status);
+        dest.writeString(this.tagline);
+        dest.writeString(this.title);
+        dest.writeValue(this.video);
+        dest.writeValue(this.voteAverage);
+        dest.writeValue(this.voteCount);
+    }
+
+    public Movie() {
+    }
+
+    protected Movie(Parcel in) {
+        this.adult = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.backdropPath = in.readString();
+        this.budget = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.genres = new ArrayList<Genre>();
+        in.readList(this.genres, List.class.getClassLoader());
+        this.genresIds = new ArrayList<Integer>();
+        in.readList(this.genresIds, List.class.getClassLoader());
+        this.homepage = in.readString();
+        this.id = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.imdbId = in.readString();
+        this.originalLanguage = in.readString();
+        this.originalTitle = in.readString();
+        this.overview = in.readString();
+        this.popularity = (Float) in.readValue(Float.class.getClassLoader());
+        this.posterPath = in.readString();
+        this.productionCompanies = new ArrayList<ProductionCompany>();
+        in.readList(this.productionCompanies, List.class.getClassLoader());
+        this.productionCountries = new ArrayList<ProductionCountry>();
+        in.readList(this.productionCountries, List.class.getClassLoader());
+        this.releaseDate = in.readString();
+        this.revenue = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.runtime = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.spokenLanguages = new ArrayList<SpokenLanguage>();
+        in.readList(this.spokenLanguages, List.class.getClassLoader());
+        this.status = in.readString();
+        this.tagline = in.readString();
+        this.title = in.readString();
+        this.video = (Boolean) in.readValue(Boolean.class.getClassLoader());
+        this.voteAverage = (Float) in.readValue(Float.class.getClassLoader());
+        this.voteCount = (Integer) in.readValue(Integer.class.getClassLoader());
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }
