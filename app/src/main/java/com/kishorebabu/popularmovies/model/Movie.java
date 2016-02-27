@@ -48,7 +48,9 @@ public class Movie {
     @JsonProperty("budget")
     private Integer budget;
     @JsonProperty("genres")
-    private List<Genre> genres = new ArrayList<Genre>();
+    private List<Genre> genres = new ArrayList<>();
+    @JsonProperty("genre_ids")
+    private List<Integer> genresIds = new ArrayList<>();
     @JsonProperty("homepage")
     private String homepage;
     @JsonProperty("id")
@@ -175,13 +177,33 @@ public class Movie {
      * @return
      *     The genres
      */
+    @JsonProperty("genre_ids")
+    public List<Integer> getGenresIds() {
+        return genresIds;
+    }
+
+    /**
+     * 
+     * @param genres
+     *     The genres
+     */
+    @JsonProperty("genre_ids")
+    public void setGenresIds(List<Integer> genresIds) {
+        this.genresIds = genresIds;
+    }
+
+    /**
+     *
+     * @return
+     *     The genres
+     */
     @JsonProperty("genres")
     public List<Genre> getGenres() {
         return genres;
     }
 
     /**
-     * 
+     *
      * @param genres
      *     The genres
      */
